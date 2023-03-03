@@ -1,11 +1,19 @@
 import "./select.css";
 
 const Select = (props) => {
-  console.log(props.itens);
+  //   const onTyped = (event) => {
+  //     props.setter(event.target.value);
+  //     console.log(props.value);
+  //   };
+
   return (
     <div className="select">
       <label>{props.label}</label>
-      <select required={props.mandatory}>
+      <select
+        onChange={(event) => props.setter(event.target.value)}
+        required={props.mandatory}
+        value={props.value}
+      >
         {props.itens.map((item) => (
           <option key={item}>{item}</option>
         ))}

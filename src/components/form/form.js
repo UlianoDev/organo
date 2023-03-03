@@ -3,7 +3,7 @@ import TextSpot from "../textSpot/textSpot";
 import Select from "../select/select";
 import Button from "../button/button";
 import { useState } from "react";
-const Form = () => {
+const Form = (props) => {
   const option = [
     "Normal",
     "Agua",
@@ -13,42 +13,49 @@ const Form = () => {
     "Toxico",
     "Eletrico",
   ];
-  // const [nome, setNome] = useState("");
-  // const [cargo, setCargo] = useState("");
-  // const [imagem, setImagem] = useState("");
+  const [nome, setNome] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [time, setTime] = useState("");
 
   const whenSaved = (event) => {
     event.preventDefault();
-    console.log("form foi submetido");
+    props.newCard({ nome: nome, cargo: cargo, imagem: imagem, time: time });
   };
   return (
     <section className="form">
       <form onSubmit={whenSaved}>
         <h2>Preencha os dados para criar o card do colaborador</h2>
         <TextSpot
-          // valuee={nome}
           mandatory={true}
           label="Nome"
           placeholder="Digite seu nome"
-          // whenAltered={(valuee) => setNome(valuee)}
+          value={nome}
+          setter={setNome}
         />
 
         <TextSpot
-          // valuee={cargo}
           mandatory={true}
           label="Cargo"
           placeholder="Digite seu cargo"
-          // whenAltered={(valuee) => setCargo(valuee)}
+          value={cargo}
+          setter={setCargo}
         />
 
         <TextSpot
-          // valuee={imagem}
           label="Imagem"
           placeholder="Digite o endereço da imagem"
-          // whenAltered={(valuee) => setImagem(valuee)}
+          value={imagem}
+          setter={setImagem}
         />
 
-        <Select mandatory={true} label="Times" itens={option} />
+        <Select
+          mandatory={true}
+          label="Times"
+          itens={option}
+          value={time}
+          setter={setTime}
+        />
         <Button text="Criar card" />
       </form>
     </section>

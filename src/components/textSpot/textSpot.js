@@ -5,11 +5,13 @@ const TextSpot = (props) => {
   //   const onTyped = (event) => {
   //     props.whenAltered(event.target.value);
   //   };
-  const [valor, setValor] = useState("");
+  //const [valor, setValor] = useState("");
+
   const onTyped = (event) => {
-    setValor(event.target.value);
-    console.log(valor);
+    props.setter(event.target.value);
+    console.log(props.value);
   };
+
   return (
     <div className="text-spot">
       <label>{props.label}</label>
@@ -18,7 +20,7 @@ const TextSpot = (props) => {
         onChange={onTyped}
         required={props.mandatory}
         placeholder={props.placeholder}
-        value={valor}
+        value={props.value}
       />
     </div>
   );
