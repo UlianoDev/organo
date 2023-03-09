@@ -9,7 +9,7 @@ const TextSpot = (props) => {
 
   const onTyped = (event) => {
     props.setter(event.target.value);
-    console.log(props.value);
+    //  console.log(props.value);
   };
 
   return (

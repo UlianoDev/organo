@@ -3,16 +3,8 @@ import TextSpot from "../textSpot/textSpot";
 import Select from "../select/select";
 import Button from "../button/button";
 import { useState } from "react";
+
 const Form = (props) => {
-  const option = [
-    "Normal",
-    "Agua",
-    "Fogo",
-    "Planta",
-    "Inseto",
-    "Toxico",
-    "Eletrico",
-  ];
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -21,6 +13,10 @@ const Form = (props) => {
   const whenSaved = (event) => {
     event.preventDefault();
     props.newCard({ nome: nome, cargo: cargo, imagem: imagem, time: time });
+    setNome("");
+    setCargo("");
+    setImagem("");
+    setTime("");
   };
   return (
     <section className="form">
@@ -52,7 +48,7 @@ const Form = (props) => {
         <Select
           mandatory={true}
           label="Times"
-          itens={option}
+          itens={props.itens}
           value={time}
           setter={setTime}
         />
