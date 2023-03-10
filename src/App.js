@@ -8,39 +8,39 @@ import TextSpot from "./components/textSpot/textSpot";
 function App() {
   const options = [
     {
-      nome: "Normal",
+      name: "Normal",
       primaryColor: "#57C278'",
       secondaryColor: "#D9F7E9",
     },
     {
-      nome: "Agua",
+      name: "Agua",
       primaryColor: "#82CFFA",
       secondaryColor: "#E8F8FF",
     },
     {
-      nome: "Fogo",
-      primaryColor: "#A6D157",
-      secondaryColor: "#F0F8E2",
-    },
-    {
-      nome: "Planta",
+      name: "Fogo",
       primaryColor: "#E06B69",
       secondaryColor: "#FDE7E8",
     },
     {
-      nome: "Inseto",
+      name: "Planta",
+      primaryColor: "#A6D157",
+      secondaryColor: "#F0F8E2",
+    },
+    {
+      name: "Inseto",
       primaryColor: "#D86EBF",
       secondaryColor: "FAE5F5",
     },
     {
-      nome: "Toxico",
-      primaryColor: "#FEBA05",
-      secondaryColor: "#FFF5D9",
-    },
-    {
-      nome: "Eletrico",
+      name: "Toxico",
       primaryColor: "#FF8A29",
       secondaryColor: "#FFEEDF",
+    },
+    {
+      name: "Eletrico",
+      primaryColor: "#FEBA05",
+      secondaryColor: "#FFF5D9",
     },
   ];
 
@@ -48,22 +48,21 @@ function App() {
 
   const whenAdd = (newcards) => {
     setcards([...cards, newcards]);
-    console.log(cards);
   };
 
   return (
-    <div classNAme="App">
+    <div className="App">
       <Banner />
       <Form
-        itens={options.map((parameter) => parameter.nome)}
+        itens={options.map((parameter) => parameter.name)}
         newCard={(newcards) => whenAdd(newcards)}
       />
       {options.map((parameter) => (
         <Team
-          key={parameter.nome}
-          title={parameter.nome}
+          key={parameter.name}
+          title={parameter.name}
           pokemon={cards.filter(
-            (parameter2) => parameter2.time === parameter.nome
+            (parameter2) => parameter2.types === parameter.name
           )}
           primaryColor={parameter.primaryColor}
           secondaryColor={parameter.secondaryColor}

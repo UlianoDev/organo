@@ -12,7 +12,9 @@ const Team = (props) => {
         <div className="pokemons">
           {props.pokemon.map((parameter) => (
             <Pokemons
-              nome={parameter.nome}
+              key={parameter.name}
+              cardColor={props.primaryColor}
+              name={parameter.name}
               cargo={parameter.cargo}
               img={parameter.imagem}
             />

@@ -5,37 +5,42 @@ import Button from "../button/button";
 import { useState } from "react";
 
 const Form = (props) => {
-  const [nome, setNome] = useState("");
-  const [cargo, setCargo] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [imagem, setImagem] = useState("");
-  const [time, setTime] = useState("");
+  const [types, setTypes] = useState("");
 
   const whenSaved = (event) => {
     event.preventDefault();
-    props.newCard({ nome: nome, cargo: cargo, imagem: imagem, time: time });
-    setNome("");
-    setCargo("");
+    props.newCard({
+      name: name,
+      description: description,
+      imagem: imagem,
+      types: types,
+    });
+    setName("");
+    setDescription("");
     setImagem("");
-    setTime("");
+    setTypes("");
   };
   return (
     <section className="form">
       <form onSubmit={whenSaved}>
-        <h2>Preencha os dados para criar o card do colaborador</h2>
+        <h2>Preencha os dados para criar o card do Pokemon</h2>
         <TextSpot
           mandatory={true}
           label="Nome"
-          placeholder="Digite seu nome"
-          value={nome}
-          setter={setNome}
+          placeholder="Digite seu name"
+          value={name}
+          setter={setName}
         />
 
         <TextSpot
           mandatory={true}
-          label="Cargo"
-          placeholder="Digite seu cargo"
-          value={cargo}
-          setter={setCargo}
+          label="Descrição"
+          placeholder="Digite seu description"
+          value={description}
+          setter={setDescription}
         />
 
         <TextSpot
@@ -47,10 +52,10 @@ const Form = (props) => {
 
         <Select
           mandatory={true}
-          label="Times"
+          label="Tipo"
           itens={props.itens}
-          value={time}
-          setter={setTime}
+          value={types}
+          setter={setTypes}
         />
         <Button text="Criar card" />
       </form>
